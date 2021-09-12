@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% for project in projects %}
+    <div class="post-block">
+        <h2 class="subtitle">{{project.title}}</h2>
+
+        <div class="small">Posted at {{ project.date_added }}</div>
+
+        <p>{{ project.intro }}</p>
+        <a href="{% url 'project_detail' project.slug %}" class="">Read more</a>
+    </div>
+{% endfor %}
+
+
+<!--display cover photo if exists (models take the first cover so no need to specify it here)-->
+{% if photo.is_cover %}
+    <img src="{{ photo.image.url }}">
+{% endif %}
+
+
+{% endblock content %}

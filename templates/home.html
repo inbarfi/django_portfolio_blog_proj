@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome!</h1>
+
+{% for post in posts %}
+    <div class="post-block {% if forloop.first %}">
+        <h2 class="subtitle">{{post.title}}</h2>
+
+        <div class="small">Posted at {{ post.date_added }}</div>
+
+        <p>{{ post.intro }}</p>
+        <a href="{% url 'post_detail' post.slug %}" class="">Read more</a>
+    </div>
+{% endfor %}
+
+<!--{% if project.is_featured %}-->
+
+<!-- seperate the two projects one by one so i can put each one in a seperate div-->
+<!--project title-->
+<!--"double brackets"-->
+<!-- project intro-->
+<!--project cover photo-->
+    <!--{% if not photo.is_cover %}
+        <img src="{{ photo.image.url }}">
+    {% endif %}
+{% endif %}-->
+
+{% endblock content %}
