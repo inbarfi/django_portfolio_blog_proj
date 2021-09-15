@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+
+<body >
+    <div class="container" >
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
+                    <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
+                    <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
+                    <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
+                </ul>
+            </nav>
+            <!-- <img src="{% static 'img/menu.png' %}" class="menu-icon"> -->
+        </div>
+        
+        <div class="main">
+            <div class="maintext">
+            <h1>{% firstof home.title "Welcome!" %}</h1>
+            <p>{% firstof home.intro "Hi, My name is Inbar and I'm a Junior developer" %}</p>
+            <div class="button-links">
+                {% for link in home.links.all %}
+                <a href="{{link.url}}"><button>{{ link.title }}</button></a>
+                {% endfor %}
+            </div>
+            </div>
+            <div class="project-cards">
+            {% for project in projects %}
+                {% if project.is_featured %}
+                    <div class="project-card">
+                        <h2 class="project-title">{{project.title}}</h2>
+                        <p class="project-intro">{{ project.intro }}</p>
+                        {% if project.cover_photo %}
+                            <div class="project-img">
+                                <img src="{{ project.cover_photo.image.url }}">
+                            </div>
+                        {% endif %}
+                        <div class="project-read-more">
+                            <a href="{% url 'project_detail' project.slug %}" class="">Go to project</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

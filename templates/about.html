@@ -1,5 +1,37 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/about_new.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
+                    <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
+                    <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
+                    <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
+                </ul>
+            </nav>
+            <!-- <img src="{% static 'img/menu.png' %}" class="menu-icon"> -->
+        </div>
+        <div class="content">
+            <h1>{% firstof about.title "About" %}</h1>
+            <p>{% firstof about.content "Hi, My name is Inbar and I'm a Junior developer" %}</p>
+            {% for photo in about.photos.all %}
+                {% if not photo.is_background %}
+                    <img src="{{ photo.image.url }}" class="about-img">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
 
-{% block content %}
-<h1>about</h1>
-{% endblock content %}
+

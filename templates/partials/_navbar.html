@@ -3,10 +3,10 @@
     <div class="navbar">
         <nav>
             <ul>
-                <li><a href="#" class="underline"></a>HOME</li>
-                <li><a href="#" class="underline"></a>ABOUT</li>
-                <li><a href="#" class="underline"></a>BLOG</li>
-                <li><a href="#" class="underline"></a>PROJECTS</li>
+                <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
+                <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
+                <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
+                <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
             </ul>
         </nav>
         <img src="{% static 'img/menu.png' %}" class="menu-icon">

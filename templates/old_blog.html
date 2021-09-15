@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% for post in posts %}
+    <div class="post-block">
+        <h2 class="subtitle">{{post.title}}</h2>
+        <div class="small">Posted at {{ post.date_added }}</div>
+        {% if post.cover_photo %}
+            <img src="{{ post.cover_photo.image.url }}">
+        {% endif %}
+        <p>{{ post.intro }}</p>
+        <a href="{% url 'post_detail' post.slug %}" class="">Read more</a>
+    </div>
+{% endfor %}
+
+
+{% endblock content %}

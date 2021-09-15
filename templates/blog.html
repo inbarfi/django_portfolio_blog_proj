@@ -1,20 +1,41 @@
-{% extends "base.html" %}
-{% block content %}
-{% for post in posts %}
-    <div class="post-block">
-        <h2 class="subtitle">{{post.title}}</h2>
-
-        <div class="small">Posted at {{ post.date_added }}</div>
-
-        <p>{{ post.intro }}</p>
-        <a href="{% url 'post_detail' post.slug %}" class="">Read more</a>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid - Exercise 1</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  </head>
+  <body>
+      <div class="container">  
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
+                    <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
+                    <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
+                    <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
+                </ul>
+            </nav>
+            <!-- <img src="{% static 'img/menu.png' %}" class="menu-icon"> -->
+        </div>
+        <h1>BLOG</h1>
+        <div class="post-block"> 
+            {% for post in posts %}
+                <div class="post-img">
+                {% if post.cover_photo %}
+                    <img src="{{ post.cover_photo.image.url }}">
+                {% endif %}
+                </div>
+                <div class="post-content">
+                    <h2 class="subtitle">{{post.title}}</h2>
+                    <div class="post-date">Posted at {{ post.date_added }}</div>
+                    <p>{{ post.intro }}</p>
+                    <a href="{% url 'post_detail' post.slug %}" class="">Read more</a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-{% endfor %}
-
-
-<!--display cover photo if exists (models take the first cover so no need to specify it here)-->
-{% if photo.is_cover %}
-    <img src="{{ photo.image.url }}">
-{% endif %}
-
-{% endblock content %}
+</body>
+</html>

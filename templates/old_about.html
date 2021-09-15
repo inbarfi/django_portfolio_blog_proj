@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body background="{{ about.background_image.image.url }}">
+    <h1>{% firstof about.title "About" %}</h1>
+    <p>{% firstof about.content "Hi, My name is Inbar and I'm a Junior developer" %}</p>
+    {% for photo in about.photos.all %}
+        {% if not photo.is_background %}
+            <img src="{{ photo.image.url }}">
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
+
+
+<div class="content">
+    <div class="container">
+        <h1>About</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, nihil! Fugiat ullam perspiciatis impedit tempore, rem, velit dolor tempora officia inventore excepturi numquam nam illo asperiores error sapiente, amet quia?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, nihil! Fugiat ullam perspiciatis impedit tempore, rem, velit dolor tempora officia inventore excepturi numquam nam illo asperiores error sapiente, amet quia?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, nihil! Fugiat ullam perspiciatis impedit tempore, rem, velit dolor tempora officia inventore excepturi numquam nam illo asperiores error sapiente, amet quia?</p>
+    </div>
+    <img src="./img/pic-4.png" class="img">
+    <!-- <img src="./img/pic-4.png" class="img"> -->
+</div>
