@@ -2,15 +2,48 @@ from django.db import models
 from django.db.models.fields import EmailField, URLField
 from django.db.models.fields.related import ForeignKey
 
+#video
+#from embed_video.fields import EmbedVideoField
+
 # Create your models here.
 # changed: Post = Project, PostPhoto = ProjectPhoto, post = project
 class Project(models.Model):
+    date_added = models.DateTimeField(auto_now_add=True)
+    is_featured = models.BooleanField(default=False)
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     intro = models.TextField()
     body = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
-    is_featured = models.BooleanField(default=False)
+    paragraph_subtitle_1 = models.TextField()
+    paragraph_text_1 = models.TextField()
+    paragraph_image1_1 = models.ImageField()
+    paragraph_image1_2 = models.ImageField()
+    paragraph_image1_3 = models.ImageField()
+    paragraph_video_1 = models.FileField(upload_to="video/%y")
+    paragraph_subtitle_2 = models.TextField()
+    paragraph_text_2 = models.TextField()
+    paragraph_image2_1 = models.ImageField()
+    paragraph_image2_2 = models.ImageField()
+    paragraph_image2_3 = models.ImageField()
+    paragraph_video_2 = models.FileField(upload_to="video/%y")
+    paragraph_subtitle_3 = models.TextField()
+    paragraph_text_3 = models.TextField()
+    paragraph_image3_1 = models.ImageField()
+    paragraph_image3_2 = models.ImageField()
+    paragraph_image3_3 = models.ImageField()
+    paragraph_video_3 = models.FileField(upload_to="video/%y")
+    paragraph_subtitle_4 = models.TextField()
+    paragraph_text_4 = models.TextField()
+    paragraph_image4_1 = models.ImageField()
+    paragraph_image4_2 = models.ImageField()
+    paragraph_image4_3 = models.ImageField()
+    paragraph_video_4 = models.FileField(upload_to="video/%y")
+    paragraph_subtitle_5 = models.TextField()
+    paragraph_text_5 = models.TextField()
+    paragraph_image5_1 = models.ImageField()
+    paragraph_image5_2 = models.ImageField()
+    paragraph_image5_3 = models.ImageField()
+    paragraph_video_5 = models.FileField(upload_to="video/%y")
 
     # by defalut it will order by id, changed to date_added:
     class Meta():
@@ -36,13 +69,13 @@ class ProjComment(models.Model):
     class Meta():
         ordering = ['date_added']
 
-class ProjectVideo(models.Model):
-    caption = models.CharField(max_length=100)
-    video = models.FileField(upload_to="video/%y")
-    project = models.ForeignKey(Project, related_name='videos', on_delete=models.CASCADE)   #?
+# class ProjectVideo(models.Model):
+#     caption = models.CharField(max_length=100)
+#     video = models.FileField(upload_to="video/%y")
+#     project = models.ForeignKey(Project, related_name='videos', on_delete=models.CASCADE)   
 
-    def __str__(self):
-        return self.caption
+#     def __str__(self):
+#         return self.caption
 
 
 class About(models.Model):

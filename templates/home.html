@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 
 <body >
@@ -29,7 +29,7 @@
             <p>{% firstof home.intro "Hi, My name is Inbar and I'm a Junior developer" %}</p>
             <div class="button-links">
                 {% for link in home.links.all %}
-                <a href="{{link.url}}"><button>{{ link.title }}</button></a>
+                <a href="{{link.url}}"><button class="{% if link.title == 'Linkedin' %}btn_linkedin{% elif link.title == 'Git'%}btn_git{% else %}btn_contact{% endif %}">{{ link.title }}</button></a>    
                 {% endfor %}
             </div>
             </div>
@@ -44,8 +44,8 @@
                                 <img src="{{ project.cover_photo.image.url }}">
                             </div>
                         {% endif %}
-                        <div class="project-read-more">
-                            <a href="{% url 'project_detail' project.slug %}" class="">Go to project</a>
+                        <div class="div-go-to-project">
+                            <a class="go-to-project" href="{% url 'project_detail' project.slug %}">Go to project</a>
                         </div>
                     </div>
                 {% endif %}

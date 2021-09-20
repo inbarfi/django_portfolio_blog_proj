@@ -1,19 +1,28 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 
-from .models import Post
+from .models import Post, PostCategory
 from .forms import CommentForm
 
 # Create your views here.
 def index(request):
     return render(request, 'home.html')#context
 
-def about(request):
-    return render(request, 'about.html')
 
 def all_posts(request):
     posts = Post.objects.all()
-    return render(request, 'blog.html', {'posts':posts})
+    categories = PostCategory.objects.all()
+    return render(request, 'blog.html', {'posts':posts, 'categories':categories})
+
+def post_by_category(request, slug):
+    category = PostCategory.objects.get(slug=slug)
+    posts = category.posts.all()
+    #or use:
+    #posts = Post.objects.filter(categories__slug = slug)
+    categories = PostCategory.objects.all()
+    return render(request, 'blog.html', {'posts':posts, 'categories':categories})
+
+    
 #.all
 
 def post_detail(request, slug):

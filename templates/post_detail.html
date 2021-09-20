@@ -17,20 +17,36 @@
 
         <hr>
 
-        <p>{{ post.body }}</p>
+        {% for para in post.paragraphs.all %}
+        {{ para.subtitle }}
 
+        <p>{{ para.text }}</p>
+        {% for photo in para.photos.all %}
+        <img src="{{ photo.image.url }}">
+        {% endfor %}
+        <!--video loop-->
+        {% for video in para.videos.all %}
+            <video width="620" controls>
+                <source src="{{ video.video.url }}" type='video/mp4'>
+                </source>
+            </video>
+        {% endfor %}
+        <!--video loop-->
+        {% endfor %}
         <hr>
 
-        <!-- display all photos if not cover photo and if exists-->
+
+        <!-- display all post (not paragraph) photos if not cover photo and if exists-->
         {% for photo in post.photos.all %}
             {% if not photo.is_cover %}
                 <img src="{{ photo.image.url }}">
             {% endif %}
         {% endfor %}
 
+        
 
 
-        <hr>
+        <hr>    
 
         <h2 class="subtitle">Comments</h2>
         {% for comment in post.comments.all %}

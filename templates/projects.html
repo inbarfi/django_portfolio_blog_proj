@@ -10,33 +10,33 @@
   <body>
       <div class="container">  
         <div class="navbar">
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
-                    <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
-                    <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
-                    <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
-                </ul>
-            </nav>
-            <!-- <img src="{% static 'img/menu.png' %}" class="menu-icon"> -->
+            <a href="#" class="logo">PROJECTS</a>
+            <ul class="nav">
+                <li><a class="a-nav" href="{% url 'home' %}">HOME</a></li>
+                <li><a class="a-nav" href="{% url 'about' %}">ABOUT</a></li>
+                <li><a class="a-nav" href="{% url 'all_posts' %}">BLOG</a></li>
+                <li><a class="a-nav" href="{% url 'all_projects' %}">PROJECTS</a></li>
+            </ul>
         </div>
         <h1>PROJECTS</h1>
-        <div class="post-block"> 
-            {% for project in projects %}
-                <div class="post-img">
-                    {% if project.cover_photo %}
-                        <div class="project-img">
-                            <img src="{{ project.cover_photo.image.url }}">
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="post-content">
-                    <h2 class="subtitle">{{project.title}}</h2>
-                    <div class="post-date">Posted at {{ project.date_added }}</div>
-                    <p>{{ project.intro }}</p>
-                    <a href="{% url 'project_detail' project.slug %}" class="">Read more</a>
-                </div>
-            {% endfor %}
+        <div class="container">
+            <div class="post-block"> 
+                {% for project in projects %}
+                    <div class="post-img">
+                        {% if project.cover_photo %}
+                            <div class="project-img">
+                                <img src="{{ project.cover_photo.image.url }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="post-content">
+                        <h2 class="subtitle">{{project.title}}</h2>
+                        <div class="post-date">Posted at {{ project.date_added }}</div>
+                        <p>{{ project.intro }}</p>
+                        <a class="go-to-project" href="{% url 'project_detail' project.slug %}">Go to project</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>

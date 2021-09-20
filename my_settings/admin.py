@@ -32,6 +32,7 @@ class ProjCommentInline(admin.StackedInline):
     model = ProjComment
     extra = 0
 
+
 class ProjectAdmin(admin.ModelAdmin):
     # list
     inlines = [ProjectPhotoInline, ProjCommentInline] 
