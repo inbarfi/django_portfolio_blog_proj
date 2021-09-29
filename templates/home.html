@@ -6,21 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_new.css' %}">
 </head>
 
 <body >
     <div class="container" >
         <div class="navbar">
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}" class="underline">HOME</a></li>
-                    <li><a href="{% url 'about' %}" class="underline">ABOUT</a></li>
-                    <li><a href="{% url 'all_posts' %}" class="underline">BLOG</a></li>
-                    <li><a href="{% url 'all_projects' %}" class="underline">PROJECTS</a></li>
-                </ul>
-            </nav>
-            <!-- <img src="{% static 'img/menu.png' %}" class="menu-icon"> -->
+            <!-- <a href="#" class="logo">HOME</a> -->
+            <ul class="nav">
+                <li><a class="a-nav" href="{% url 'home' %}">HOME</a></li>
+                <li><a class="a-nav" href="{% url 'about' %}">ABOUT</a></li>
+                <li><a class="a-nav" href="{% url 'all_posts' %}">BLOG</a></li>
+                <li><a class="a-nav" href="{% url 'all_projects' %}">PROJECTS</a></li>
+            </ul>
         </div>
         
         <div class="main">
@@ -52,6 +50,7 @@
             {% endfor %}
             </div>
         </div>
+        <div class="footer">© Inbar Fischer 2021 · Made in Django</div>
     </div>
 </body>
 </html>

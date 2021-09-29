@@ -202,3 +202,13 @@ img{
 /* .category-title{
     text-decoration: none;
 } */
+
+.footer{
+    font-size: 9px;
+    color: #fff;
+    margin-top: 440px;
+    float: center;
+    margin-left: 520px;
+    margin-bottom: 0px;
+
+}

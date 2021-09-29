@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
   </head>
   <body>
-       
         <div class="navbar">
             <a href="#" class="logo">BLOG</a>
             <ul class="nav">
@@ -45,7 +44,10 @@
                     <a class="read-more" href="{% url 'post_detail' post.slug %}" class="">Read more</a>
                 </div>
             {% endfor %}
+            <!-- <div class="footer">© Inbar Fischer 2021 · Made in Django</div> -->
         </div>
+        
+
     </div>
 </body>
 </html>

@@ -5,29 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>post_detail</title>
-    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post_detail_new.css' %}">
   </head>
   <body>
-        <div class="navbar">
-            <a href="#" class="logo">BLOG</a>
-            <ul class="nav">
-                <li><a class="a-nav" href="{% url 'home' %}">HOME</a></li>
-                <li><a class="a-nav" href="{% url 'about' %}">ABOUT</a></li>
-                <li><a class="a-nav" href="{% url 'all_posts' %}">BLOG</a></li>
-                <li><a class="a-nav" href="{% url 'all_projects' %}">PROJECTS</a></li>
-            </ul>
-        </div>
+
         <div class="container"> 
         <div class="title">
-            <h1>projects</h1>
+            <h1>BLOG</h1>
         </div>
 
         <div class="post-block">
-            <h2 class="title">{{post.title}}</h2>
-            <div class="posted-at">Posted at {{ post.date_added }}</div>
-            <div class="intro">{{ post.intro }}</div>
+            <h2 class="subtitle">{{post.title}}</h2>
+            <div class="small">Posted at {{ post.date_added }}</div>
+            <div class="strong">{{ post.intro }}</div>
             {% if post.cover_photo %}
-                <img class="cover-photo" src="{{ post.cover_photo.image.url }}">
+                <img src="{{ post.cover_photo.image.url }}">
             {% endif %}
             <!--display cover photo if exists-->
             <hr>
@@ -54,7 +46,7 @@
                 {% endif %}
             {% endfor %}
             <hr>    
-            <h2 class="title-comments">Comments</h2>
+            <h2 class="subtitle">Comments</h2>
             {% for comment in post.comments.all %}
                 <article class="media">
                     <div class="media-content">
@@ -72,13 +64,13 @@
                     <p>No comments yet.</p>
                 </div>
             {% endfor %}
-            <h2 class="title-comments">Add Comment</h2>
+            <h2 class="subtitle">Add Comment</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="field">
                     <div class="control">
-                        <button class="button-submit">Submit</button>
+                        <button class="button is-success">Submit</button>
                     </div>
                 </div>
             </form>

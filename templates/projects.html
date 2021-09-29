@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grid - Exercise 1</title>
-    <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+    <link rel="stylesheet" href="{% static 'css/projects_new.css' %}">
   </head>
   <body>
-      <div class="container">  
+      <!-- <div class="container">   -->
         <div class="navbar">
             <a href="#" class="logo">PROJECTS</a>
             <ul class="nav">
@@ -18,8 +18,11 @@
                 <li><a class="a-nav" href="{% url 'all_projects' %}">PROJECTS</a></li>
             </ul>
         </div>
-        <h1>PROJECTS</h1>
+        <!-- <h1>PROJECTS</h1> -->
         <div class="container">
+            <div class="title">
+                <h1>PROJECTS</h1>
+            </div>
             <div class="post-block"> 
                 {% for project in projects %}
                     <div class="post-img">
